@@ -1,6 +1,7 @@
 #Clase biblioteca
 class Biblioteca:
-    def __init__(self):
+    def __init__(self,nombre): #Crear una biblioteca (solo una en nuestro proyecto)
+        self.nombre=nombre
         self.libros=[]
 
     def agregar_libro(self,libro): #Agregar el libro
