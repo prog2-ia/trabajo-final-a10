@@ -6,7 +6,7 @@ class Libro:
         self.anyo=anyo
         self.disponible=True
 
-    def prestar(self): #Prestar el libro dependiendo que si está disponible o no
+    def prestar(self): #Prestar el libro dependiendo de que si está disponible o no
         if self.disponible:
             self.disponible=False
             print('Libro prestado con éxito.')
@@ -28,7 +28,21 @@ class Libro:
 
 #Clase usuario
 class Usuario:
-    def __init__(self,nombre,apellido):
+    def __init__(self,nombre,apellido): #Crear un usuario
         self.nombre=nombre
         self.apellido=apellido
         self.prestados=[]
+
+    def prestar_libro(self,libro): #Prestar el libro dependiendo de que si este esté disponible
+        if libro.disponible:
+            libro.prestar()
+            self.prestados.append(libro)
+        else:
+            print('No se puede prestar el libro.')
+
+    def devolver_libro(self,libro): #Devolver el libro dependiendo de que si este se encuentra entre los prestados
+        if libro in self.prestados:
+            libro.devolver()
+            self.prestados.remove(libro)
+        else:
+            print('Libro incorrecto.')
