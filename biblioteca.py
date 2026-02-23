@@ -1,3 +1,27 @@
+#Clase biblioteca
+class Biblioteca:
+    def __init__(self):
+        self.libros=[]
+
+    def agregar_libro(self,libro): #Agregar el libro
+        self.libros.append(libro)
+        print('Libro agregado correctamente.')
+
+    def eliminar_libro(self,libro): #Eliminar el libro dependiendo de que si este se encuentra en la lista de libros
+        if libro in self.libros:
+            self.libros.remove(libro)
+            print('Libro eliminado correctamente.')
+        else:
+            print('El libro no existe.')
+
+    def mostrar_libro(self,libro): #Mostrar información del libro dependiendo de que si este se encuentra en la lista de libros
+        if libro in self.libros:
+            print(libro)
+        else:
+            print('El libro no existe.')
+
+
+
 #Clase libro
 class Libro:
     def __init__(self,titulo,autor,anyo): #Crear un libro (inicialmente disponible para préstamos)
@@ -13,7 +37,7 @@ class Libro:
         else:
             print('El libro ya está prestado.')
 
-    def dovolver(self): #Devolver el libro
+    def devolver(self): #Devolver el libro
         self.disponible=True
         print('Libro devuelto con éxito.')
 
