@@ -1,8 +1,7 @@
 #Clase hija usuario
 class Usuario:
-    def __init__(self,nombre,apellido): #Crear un usuario
-        self.nombre=nombre
-        self.apellido=apellido
+    def __init__(self,dni,nombre,apellido,edad): #Crear un usuario
+        super().__init__(dni,nombre,apellido,edad)
         self.prestados=[]
 
     def prestar_libro(self,libro): #Prestar el libro dependiendo de que si este esté disponible
