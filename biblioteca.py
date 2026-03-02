@@ -1,6 +1,6 @@
 #Clase padre biblioteca
 class Biblioteca:
-    def __init__(self,nombre): #Crear una biblioteca (solo una en nuestro proyecto)
+    def __init__(self,nombre): #Crear una biblioteca (de momento solo una)
         self.nombre=nombre
         self.libros=[]
 
