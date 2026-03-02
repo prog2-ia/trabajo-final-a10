@@ -6,7 +6,7 @@ class Libro:
         self.anyo=anyo
         self.disponible=True
 
-    def prestar(self): #Prestar el libro dependiendo de que si está disponible o no
+    def prestar(self): #Prestar el libro dependiendo de que si está disponible
         if self.disponible:
             self.disponible=False
             print('Libro prestado con éxito.')
