@@ -15,12 +15,6 @@ class Biblioteca:
         else:
             print('El libro no existe.')
 
-    def mostrar_libro(self,libro): #Mostrar información del libro dependiendo de que si este se encuentra en la lista de libros
-        if libro in self.libros:
-            print(libro)
-        else:
-            print('El libro no existe.')
-
 
 
 #Clase libro
