@@ -1,3 +1,5 @@
+from libro import Libro
+
 class Digital(Libro):
     def __init__(self, titulo, autor, anyo, formato, url):
         super().__init__(titulo, autor, anyo)
