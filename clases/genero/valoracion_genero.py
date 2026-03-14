@@ -7,7 +7,7 @@ class Valoracion(Genero):
 
     def valorar(self,libro,puntuacion):
         if libro not in self.libros:
-            print("El libro no está en este género")
+            print("El libro_local no está en este género")
             return
         if puntuacion<0 or puntuacion>10:
             print("La puntuación debe ser entre 0 y 10")

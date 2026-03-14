@@ -1,4 +1,4 @@
-#Clase padre persona
+#Clase padre persona_local
 class Persona:
     def __init__(self,dni,nombre,apellido,edad):
         self.dni=dni

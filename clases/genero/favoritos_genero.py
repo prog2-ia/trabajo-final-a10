@@ -1,3 +1,5 @@
+from genero import Genero
+
 class Favoritos(Genero):
     def __init__(self,nombre):
         super().__init__(nombre)

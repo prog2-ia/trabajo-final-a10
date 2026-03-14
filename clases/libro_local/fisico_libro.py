@@ -1,4 +1,4 @@
-from libro import Libro
+from clases.libro_local.libro_local import Libro
 
 class Fisico(Libro):
     def __init__(self, titulo, autor, anyo, estanteria, seccion, estado="Excelente"):
