@@ -5,6 +5,7 @@ class Libro:
         self.autor=autor
         self.anyo=anyo
         self.disponible=True
+        self.genero=None
 
     def prestar(self): #Prestar el libro dependiendo de que si está disponible
         if self.disponible:
@@ -22,4 +23,8 @@ class Libro:
             estado='Disponible'
         else:
             estado='Prestado'
-        return f'Título: {self.titulo} | Autor: {self.autor} | Año: {self.anyo} | Estado: {estado}'
+        if self.genero:
+            genero=self.genero.nombre
+        else:
+            genero='Sin género'
+        return f'Título: {self.titulo} | Autor: {self.autor} | Año: {self.anyo} | Género: {genero} | Estado: {estado}'

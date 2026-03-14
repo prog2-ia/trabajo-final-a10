@@ -13,6 +13,7 @@ class Genero:
                 print('El libro ya existe en este género')
                 return
         self.libros.append(libro)
+        libro.genero=self
 
     def listar(self):
         if not self.libros:

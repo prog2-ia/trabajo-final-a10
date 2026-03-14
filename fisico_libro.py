@@ -1,3 +1,5 @@
+from libro import Libro
+
 class Fisico(Libro):
     def __init__(self, titulo, autor, anyo, estanteria, seccion, estado="Excelente"):
         super().__init__(titulo, autor, anyo)
