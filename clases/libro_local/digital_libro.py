@@ -8,7 +8,7 @@ class Digital(Libro):
 
     def prestar(self):
         print(f"Enviando enlace de descarga ({self.formato}) al usuario: {self.__url}")
-        # Sobreescribimos el método ya que un libro_local digital siempre está disponible
+        # Sobreescribimos el metodo ya que un libro_local digital siempre está disponible
 
     def mostrar_info(self):
         info_digital = super().mostrar_info()
