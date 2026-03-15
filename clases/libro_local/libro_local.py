@@ -1,24 +1,23 @@
-#Clase padre libro
 class Libro:
-    def __init__(self,titulo,autor,anyo): #Crear un libro (inicialmente disponible para préstamos)
+    def __init__(self,titulo,autor,anyo):
         self.titulo=titulo
         self.autor=autor
         self.anyo=anyo
-        self.disponible=True
+        self.disponible=True # Disponible por defecto para poder hacer prestaciones
         self.genero=None
 
-    def prestar(self): #Prestar el libro dependiendo de que si está disponible
-        if self.disponible:
+    def prestar(self): # Método para prestar un libro
+        if self.disponible: # Si está disponible se cambia a False para poner que ya ha sido prestado
             self.disponible=False
             print('Libro prestado con éxito.')
-        else:
+        else: # Si ya no está disponible (False) es porque ya ha sido prestado
             print('El libro ya está prestado.')
 
-    def devolver(self): #Devolver el libro
-        self.disponible=True
+    def devolver(self): # Método para devolver un libro
+        self.disponible=True # Disponible vuelve a estar en True porque ha sido devuelto
         print('Libro devuelto con éxito.')
 
-    def mostrar_info(self): #Mostrar información del libro
+    def mostrar_info(self): # Método para mostrar la info de un libro
         if self.disponible:
             estado='Disponible'
         else:
