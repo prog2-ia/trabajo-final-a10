@@ -10,7 +10,7 @@ class Favoritos(Genero):
         if libro in self.libros and libro not in self.favoritos:
             self.favoritos.append(libro)
 
-    def listar_favoritos(self): # Método para mostrar los favoritos por pantalla
+    def listar_favoritos(self): # Método para mostrar los favoritos por consola
         if not self.favoritos: # Si la lista está vacía no hace nada
             print("No hay libros favoritos en este género")
         else:
