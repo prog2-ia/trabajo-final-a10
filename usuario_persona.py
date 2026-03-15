@@ -1,3 +1,5 @@
+from persona import Persona
+
 class Usuario(Persona):
     def __init__(self,dni,nombre,apellido,edad): #Crear un usuario
         super().__init__(dni,nombre,apellido,edad)
