@@ -1,16 +1,15 @@
-#Clase padre biblioteca
 class Biblioteca:
-    def __init__(self,nombre): #Crear una biblioteca (de momento solo una)
+    def __init__(self,nombre):
         self.nombre=nombre
-        self.libros=[]
+        self.libros=[] # Lista vacía de los libros que contendrá la biblioteca
 
-    def agregar_libro(self,libro): #Agregar el libro
+    def agregar_libro(self,libro): # Método para agregar un libro a la biblioteca
         self.libros.append(libro)
         print('Libro agregado correctamente.')
 
-    def eliminar_libro(self,libro): #Eliminar el libro dependiendo de que si este se encuentra en la lista de libros
-        if libro in self.libros:
-            self.libros.remove(libro)
+    def eliminar_libro(self,libro): # Método para eliminar un libro de la biblioteca
+        if libro in self.libros: # Verifica si el libro está en la biblioteca
+            self.libros.remove(libro) # Si está lo elimina
             print('Libro eliminado correctamente.')
-        else:
+        else: # Si no está mensaje de error
             print('El libro no existe.')
