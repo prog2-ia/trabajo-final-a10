@@ -1,4 +1,4 @@
-from persona import Persona
+from persona_local import Persona
 
 class Empleado(Persona):
     def __init__(self, dni, nombre, apellido, edad, id_empleado, puesto):

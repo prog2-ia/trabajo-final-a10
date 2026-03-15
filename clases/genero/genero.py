@@ -6,11 +6,11 @@ class Genero:
 
     def agregar(self,libro,biblioteca):
         if libro not in biblioteca.libros:
-            print('El libro no existe en la biblioteca')
+            print('El libro_local no existe en la biblioteca')
             return
         for i in self.libros:
             if i.titulo==libro.titulo:
-                print('El libro ya existe en este género')
+                print('El libro_local ya existe en este género')
                 return
         self.libros.append(libro)
         libro.genero=self
