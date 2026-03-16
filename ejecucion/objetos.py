@@ -7,10 +7,10 @@ from clases.genero.genero import Genero
 
 biblioteca_central=Biblioteca('Biblioteca central')
 
-libro1=Fisico('Don Quijote de la Mancha','Miguel de Cervantes',1605,'A1','Clásicos')
-libro2=Fisico('1984','George Orwell',1949,'B2','Distopía')
-libro3=Fisico('La sombra del viento','Carlos Ruiz Zafón',2001,'C2','Novela')
-libro4=Fisico('Los juegos del hambre','Suzanne Collins',2008,'D4','Juvenil')
+libro1=Fisico('Don Quijote de la Mancha','Miguel de Cervantes',1605,'A1')
+libro2=Fisico('1984','George Orwell',1949,'B2')
+libro3=Fisico('La sombra del viento','Carlos Ruiz Zafón',2001,'C2')
+libro4=Fisico('Los juegos del hambre','Suzanne Collins',2008,'D4')
 libro5=Digital('Clean Code','Robert C. Martin',2008,'PDF','https://descarga.com/cleancode')
 libro6=Digital('Python Crash Course','Eric Matthes',2019,'EPUB','https://biblioteca.com/pythoncrashcourse')
 
