@@ -1,10 +1,5 @@
-from objetos import (
-    biblioteca_central,
-    libro1,libro2,libro3,libro4,libro5,libro6,
-    usuario1,
-    empleado1,empleado4,
-    genero1
-)
+'''
+from objetos import *
 
 def main():
     #Colores para diferenciar textos y códigos
@@ -69,3 +64,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+'''
