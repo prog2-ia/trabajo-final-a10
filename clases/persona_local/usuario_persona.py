@@ -1,4 +1,4 @@
-from persona_local import Persona
+from clases.persona_local.persona_local import Persona
 
 class Usuario(Persona):
     def __init__(self,dni,nombre,apellido,edad):

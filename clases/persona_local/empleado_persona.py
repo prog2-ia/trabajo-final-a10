@@ -1,4 +1,4 @@
-from persona_local import Persona
+from clases.persona_local.persona_local import Persona
 
 class Empleado(Persona):
     def __init__(self, dni, nombre, apellido, edad, id_empleado, puesto):
@@ -20,7 +20,4 @@ class Empleado(Persona):
             print(f"ACCESO DENEGADO: El puesto de '{self._puesto}' no tiene permisos para modificar el inventario.")
 
     def mostrar_info(self): # Método para mostrar la info de un empleado
-        return (f"EMPLEADO #{self.__id_empleado}\n"
-                f"Nombre: {self.nombre} {self.apellido}\n"
-                f"Cargo: {self._puesto}\n"
-                f"{self.libros_gestionados} libros procesados.")
+        return f'{super().mostrar_info()} | ID_empleado: {self.__id_empleado} | Puesto: {self._puesto}'

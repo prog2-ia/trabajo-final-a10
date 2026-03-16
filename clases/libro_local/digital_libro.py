@@ -1,4 +1,4 @@
-from libro_local import Libro
+from clases.libro_local.libro_local import Libro
 
 class Digital(Libro):
     def __init__(self, titulo, autor, anyo, formato, url):

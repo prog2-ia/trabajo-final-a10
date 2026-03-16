@@ -1,4 +1,4 @@
-from genero import Genero
+from clases.genero.genero import Genero
 
 class Valoracion(Genero):
     def __init__(self,nombre):
