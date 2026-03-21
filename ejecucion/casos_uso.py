@@ -5,6 +5,8 @@ from clases.persona_local.empleado_persona import Empleado
 from clases.persona_local.usuario_persona import Usuario
 from clases.genero.genero import Genero
 
+
+
 #Biblioteca
 def crear_biblio():
     nombre=input('Introduce el nombre: ')
@@ -19,6 +21,8 @@ def eliminar_libro_biblio(biblioteca,libro):
 
 def mostrar_info_biblio(biblioteca):
     print(biblioteca.mostrar_info())
+
+
 
 #Libro
 def crear_libro_fisico():
@@ -44,6 +48,8 @@ def crear_libro_digital():
 def mostrar_info_libro(libro):
     print(libro.mostrar_info())
 
+
+
 #Persona
 def crear_empleado(dni,nombre,apellido,edad,id_empleado,puesto):
     empleado=Empleado(dni,nombre,apellido,edad,id_empleado,puesto)
@@ -64,6 +70,8 @@ def devolver_libro_usuario(usuario,libro):
 
 def mostrar_info_persona(persona):
     print(persona.mostrar_info())
+
+
 
 #Género
 def crear_genero(nombre):
