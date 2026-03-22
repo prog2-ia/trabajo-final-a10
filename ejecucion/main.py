@@ -1,67 +1,195 @@
-'''
-from objetos import *
+from ejecucion.casos_uso import agregar_libro_biblio, eliminar_libro_biblio, mostrar_info_biblio, crear_libro_fisico, \
+    crear_libro_digital, reportar_condicion_libro, buscar_titulo_libro, mostrar_info_libro, crear_empleado, \
+    crear_usuario, gestionar_registro_empleado, buscar_empleado, buscar_usuario, prestar_libro_usuario, \
+    devolver_libro_usuario, mostrar_info_persona
+from ejecucion.objetos import bd_biblioteca
 
 def main():
-    #Colores para diferenciar textos y códigos
-    violeta="\033[35m"
-    yellow="\033[33m"
-    reset="\033[0m"
-    print()
+    biblioteca=bd_biblioteca()
+    print('Bienvenido a la Biblioteca Central')
+    print('1. Consultar la biblioteca')
+    print('2. Consultar libros')
+    print('3. Consultar personas')
+    print('4. Consultar géneros')
+    print('5. Consultar datos existentes')
+    print('6. Salir')
+    eleccion=0
+    while eleccion not in [1,2,3,4,5]:
+        eleccion=int(input('¿Qué deseas hacer hoy? (Introduce un número): '))
+        if eleccion not in [1,2,3,4,5]:
+            print('Error: opción inválida')
 
-    #Clase biblioteca
-    print(violeta,'CLASE BIBLIOTECA:',reset)
-    biblioteca_central.agregar_libro(libro1) #Agregar un libro a la biblioteca
-    biblioteca_central.agregar_libro(libro2)
-    biblioteca_central.agregar_libro(libro3)
-    biblioteca_central.agregar_libro(libro4)
-    biblioteca_central.agregar_libro(libro5)
-    biblioteca_central.agregar_libro(libro6)
-    print(yellow,'Biblioteca después de agregar libros:',reset)
-    print(biblioteca_central.mostrar_info()) #Comprobación
-    biblioteca_central.eliminar_libro(libro6) #Eliminar un libro de la biblioteca
-    print(yellow,'Biblioteca después de eliminar un libro:',reset)
-    print(biblioteca_central.mostrar_info()) #Comprobación
-    print()
+    if eleccion==1:
+        print('Consultar la biblioteca')
+        print('1. Agregar libros ya existentes a la biblioteca')
+        print('2. Eliminar libros de la biblioteca')
+        print('3. Mostrar información de la biblioteca')
+        sub_eleccion=0
+        while sub_eleccion not in [1,2,3]:
+            sub_eleccion=int(input('¿Qué deseas hacer hoy? (Introduce un número): '))
+            if sub_eleccion not in [1,2,3]:
+                print('Error: opción inválida')
 
-    #Clase libro y sus subclases
-    print(violeta,'CLASE LIBRO Y SUS SUBCLASES:',reset)
-    print(yellow,'Mostrar informaciones de libros:',reset)
-    print(libro1.mostrar_info()) #Mostrar información de un libro físico
-    print(libro6.mostrar_info()) #Mostrar información de un libro digital
-    print(yellow,'Actualizar la condición de un libro:',reset)
-    libro1.reportar_condicion('Mala') #Repostar la condición de un libro
-    print(libro1.mostrar_info()) #Comprobación
-    print()
+        if sub_eleccion==1:
+            titulo=input('Introduce el libro que deseas agregar: ')
+            libro,validez=buscar_titulo_libro(titulo)
+            if validez:
+                agregar_libro_biblio(biblioteca,libro)
+                print('Libro agregado correctamente')
+            else:
+                print('Libro no existente')
 
-    #Clase persona y sus subclases
-    print(violeta,'CLASE PERSONA Y SUS SUBCLASES:',reset)
-    print(yellow,'Prestar un libro:',reset)
-    usuario1.prestar_libro(libro1) #Prestar un libro, cambiar su estado a "Prestado" y añadir este a la lista de libros prestados
-    print(libro1.mostrar_info()) #Comprobación
-    print(yellow,'Devolver un libro:',reset)
-    usuario1.devolver_libro(libro1) #Devolver un libro, cambiar su estado a "Disponible" y quitar este a la lista de libros prestados
-    print(libro1.mostrar_info()) #Comprobación
-    print(yellow,'Mostrar información de un empleado y gestionar un libro:',reset)
-    print(empleado1.mostrar_info()) #Mostrar información de un empleado
-    empleado1.gestionar_registro(biblioteca_central,libro6) #Gestionar un libro para una biblioteca (añadirlo)
-    print(yellow,'Mostrar información de un empleado y gestionar un libro, pero en este caso no se puede:',reset)
-    print(empleado1.mostrar_info())
-    print(empleado4.mostrar_info()) #Mostrar información de un empleado
-    empleado4.gestionar_registro(biblioteca_central,libro3) #En este caso no le deja, ya que tiene el puesto "asistente"
-    print(yellow,'Comprobación de los libros de la biblioteca:',reset)
-    print(biblioteca_central.mostrar_info()) #Comprobación de los libros de la biblioteca
-    print()
+        elif sub_eleccion==2:
+            titulo=input('Introduce el libro que deseas eliminar: ')
+            libro,validez=buscar_titulo_libro(titulo)
+            if validez:
+                eliminar_libro_biblio(biblioteca,libro)
+                print('Libro eliminado correctamente')
+            else:
+                print('Libro no existente')
 
-    #Clase género
-    print(violeta,'CLASE GÉNERO:',reset)
-    print(yellow,'Agregar libros en el género:',reset)
-    genero1.agregar(libro1,biblioteca_central) #Agregar un libro al género, ya que por defecto no tiene ningún género
-    genero1.agregar(libro2,biblioteca_central)
-    print(genero1.mostrar_info()) #Comprobación
-    print(yellow,'Prueba de que los libros ya tienen género:',reset)
-    print(libro1.mostrar_info())
-    print(libro2.mostrar_info())
+        else:
+            mostrar_info_biblio(biblioteca)
 
-if __name__ == '__main__':
+    elif eleccion==2:
+        print('Consultar libros')
+        print('1. Crear un libro físico')
+        print('2. Crear un libro digital')
+        print('3. Reportar la condición de un libro físico')
+        print('4. Mostrar información de un libro')
+        sub_eleccion=0
+        while sub_eleccion not in [1,2,3,4]:
+            sub_eleccion=int(input('¿Qué deseas hacer hoy? (Introduce un número): '))
+            if sub_eleccion not in [1,2,3,4]:
+                print('Error: opción inválida')
+
+        if sub_eleccion==1:
+            titulo=input('Introduce el titulo: ')
+            autor=input('Introduce el autor: ')
+            anyo=int(input('Introduce el año: '))
+            estanteria=input('Introduce la estanteria: ')
+            crear_libro_fisico(titulo,autor,anyo,estanteria)
+            print(f'Libro físico "{titulo}" creado correctamente')
+
+        elif sub_eleccion==2:
+            titulo=input('Introduce el titulo: ')
+            autor=input('Introduce el autor: ')
+            anyo=int(input('Introduce el año: '))
+            formato=input('Introduce el formato: ')
+            url=input('Introduce el url: ')
+            crear_libro_digital(titulo,autor,anyo,formato,url)
+            print(f'Libro digital "{titulo}" creado correctamente')
+
+        elif sub_eleccion==3:
+            titulo=input('Introduce el libro: ')
+            condicion=input('Introduce la nueva condición: ')
+            libro,validez=buscar_titulo_libro(titulo)
+            if validez:
+                reportar_condicion_libro(libro,condicion)
+                print('Condición reportada correctamente')
+            else:
+                print('Libro no existente')
+
+        else:
+            titulo=input('Introduce el libro: ')
+            libro,validez=buscar_titulo_libro(titulo)
+            if validez:
+                mostrar_info_libro(libro)
+            else:
+                print('Libro no existente')
+
+    elif eleccion==3:
+        print('Consultar personas')
+        print('1. Crear un empleado')
+        print('2. Crear un usuario')
+        print('3. Gestionar registros (solo para empleados con roles correspondientes)')
+        print('4. Prestar un libro')
+        print('5. Devolver un libro')
+        print('6. Mostrar información de una persona')
+        sub_eleccion=0
+        while sub_eleccion not in [1,2,3,4,5,6]:
+            sub_eleccion=int(input('¿Qué deseas hacer hoy? (Introduce un número): '))
+            if sub_eleccion not in [1,2,3,4,5,6]:
+                print('Error: opción inválida')
+
+        if sub_eleccion==1:
+            dni=input('Introduce el DNI: ')
+            nombre=input('Introduce el nombre: ')
+            apellido=input('Introduce el apellido: ')
+            edad=input('Introduce la edad: ')
+            id_empleado=input('Introduce el id: ')
+            puesto=input('Introduce el puesto: ')
+            crear_empleado(dni,nombre,apellido,edad,id_empleado,puesto)
+            print(f'Empleado {nombre} {apellido} creado correctamente')
+
+        elif sub_eleccion==2:
+            dni=input('Introduce el DNI: ')
+            nombre=input('Introduce el nombre: ')
+            apellido=input('Introduce el apellido: ')
+            edad=input('Introduce la edad: ')
+            crear_usuario(dni,nombre,apellido,edad)
+            print(f'Usuario {nombre} {apellido} creado correctamente')
+
+        elif sub_eleccion==3:
+            titulo=input('Introduce el libro: ')
+            empleado=input('Introduce el dni del empleado: ')
+            libro,validez=buscar_titulo_libro(titulo)
+            if validez:
+                dni,validez=buscar_empleado(empleado)
+                if validez:
+                    gestionar_registro_empleado(dni,biblioteca,libro)
+                else:
+                    print('Empleado no existente')
+            else:
+                print('Libro no existente')
+
+        elif sub_eleccion==4:
+            titulo=input('Introduce el libro: ')
+            usuario=input('Introduce el DNI del usuario: ')
+            libro,validez=buscar_titulo_libro(titulo)
+            if validez:
+                dni,validez=buscar_usuario(usuario)
+                if validez:
+                    prestar_libro_usuario(dni,libro)
+                else:
+                    print('Usuario no existente')
+            else:
+                print('Libro no existente')
+
+        elif sub_eleccion==5:
+            titulo=input('Introduce el libro: ')
+            usuario=input('Introduce el DNI del usuario: ')
+            libro,validez=buscar_titulo_libro(titulo)
+            if validez:
+                dni,validez=buscar_usuario(usuario)
+                if validez:
+                    devolver_libro_usuario(dni,libro)
+                else:
+                    print('Usuario no existente')
+            else:
+                print('Libro no existente')
+
+        elif sub_eleccion==6:
+            persona=input('Introduce el dni de la persona: ')
+            dni,validez=buscar_empleado(persona)
+            if validez:
+                mostrar_info_persona(dni)
+            else:
+                dni,validez=buscar_usuario(persona)
+                if validez:
+                    mostrar_info_persona(dni)
+                else:
+                    print('Persona no existente')
+
+
+
+
+
+
+
+
+
+
+
+if __name__=='__main__':
     main()
-'''
