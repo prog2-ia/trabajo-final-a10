@@ -2,16 +2,14 @@ from ejecucion.casos_uso import agregar_libro_biblio, eliminar_libro_biblio, mos
     crear_libro_digital, reportar_condicion_libro, buscar_titulo_libro, mostrar_info_libro, crear_empleado, \
     crear_usuario, gestionar_registro_empleado, buscar_empleado, buscar_usuario, prestar_libro_usuario, \
     devolver_libro_usuario, mostrar_info_persona, crear_genero, agregar_libro_genero, buscar_genero, mostrar_info_genero
-from ejecucion.objetos import bd_biblioteca, bd_libro, bd_empleado, bd_usuario, bd_genero
-
+from ejecucion.objetos import biblioteca_central, bd_libros, bd_empleados, bd_usuarios, bd_generos
 
 def main():
-    biblioteca=bd_biblioteca()
     while True:
         print('Bienvenido a la Biblioteca Central')
         print('1. Consultar la biblioteca')
         print('2. Consultar libros')
-        print('3. Consultar personas')
+        print('3. Consultar personas y préstamos')
         print('4. Consultar géneros')
         print('5. Consultar datos existentes')
         print('6. Salir')
@@ -36,7 +34,7 @@ def main():
                 titulo=input('Introduce el libro que deseas agregar: ')
                 libro,validez=buscar_titulo_libro(titulo)
                 if validez:
-                    agregar_libro_biblio(biblioteca,libro)
+                    agregar_libro_biblio(biblioteca_central,libro)
                     print('Libro agregado correctamente')
                 else:
                     print('Libro no existente')
@@ -45,13 +43,13 @@ def main():
                 titulo=input('Introduce el libro que deseas eliminar: ')
                 libro,validez=buscar_titulo_libro(titulo)
                 if validez:
-                    eliminar_libro_biblio(biblioteca,libro)
+                    eliminar_libro_biblio(biblioteca_central,libro)
                     print('Libro eliminado correctamente')
                 else:
                     print('Libro no existente')
 
             else:
-                mostrar_info_biblio(biblioteca)
+                mostrar_info_biblio(biblioteca_central)
 
         elif eleccion==2:
             print('Consultar libros')
@@ -139,7 +137,7 @@ def main():
                 if validez:
                     dni,validez=buscar_empleado(empleado)
                     if validez:
-                        gestionar_registro_empleado(dni,biblioteca,libro)
+                        gestionar_registro_empleado(dni,biblioteca_central,libro)
                     else:
                         print('Empleado no existente')
                 else:
@@ -172,7 +170,7 @@ def main():
                     print('Libro no existente')
 
             elif sub_eleccion==6:
-                persona=input('Introduce el dni de la persona: ')
+                persona=input('Introduce el DNI de la persona: ')
                 dni,validez=buscar_empleado(persona)
                 if validez:
                     mostrar_info_persona(dni)
@@ -206,7 +204,7 @@ def main():
                 if validez:
                     genero,validez=buscar_genero(nombre_gen)
                     if validez:
-                        agregar_libro_genero(genero,libro,biblioteca)
+                        agregar_libro_genero(genero,libro,biblioteca_central)
                         print(f'Libro "{titulo}" agregado al género "{nombre_gen}" correctamente')
                     else:
                         print('Género no existente')
@@ -234,32 +232,35 @@ def main():
                     print('Error: opción inválida')
 
             if sub_eleccion==1:
-                for i in bd_libro():
-                    print(i.titulo)
+                for i in bd_libros:
+                    if i==bd_libros[-1]:
+                        print(i.titulo)
+                    else:
+                        print(i.titulo,end=' | ')
 
             elif sub_eleccion==2:
-                for i in bd_empleado():
-                    print(i.nombre,i.apellido)
+                for i in bd_empleados:
+                    if i==bd_empleados[-1]:
+                        print(i.nombre,i.apellido)
+                    else:
+                        print(i.nombre,i.apellido,end=' | ')
 
             elif sub_eleccion==3:
-                for i in bd_usuario():
-                    print(i.nombre,i.apellido)
+                for i in bd_usuarios:
+                    if i==bd_usuarios[-1]:
+                        print(i.nombre,i.apellido)
+                    else:
+                        print(i.nombre,i.apellido,end=' | ')
 
             elif sub_eleccion==4:
-                for i in bd_genero():
-                    print(i.nombre)
+                for i in bd_generos:
+                    if i==bd_generos[-1]:
+                        print(i.nombre)
+                    else:
+                        print(i.nombre,end=' | ')
 
         else:
             break
-
-
-
-
-
-
-
-
-
 
 if __name__=='__main__':
     main()
