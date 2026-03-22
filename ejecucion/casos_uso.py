@@ -3,7 +3,7 @@ from clases.libro_local.digital_libro import Digital
 from clases.persona_local.empleado_persona import Empleado
 from clases.persona_local.usuario_persona import Usuario
 from clases.genero.genero import Genero
-from ejecucion.objetos import bd_libro, bd_empleado, bd_usuario
+from ejecucion.objetos import bd_libro, bd_empleado, bd_usuario, bd_genero
 
 
 #Biblioteca
@@ -98,3 +98,12 @@ def buscar_usuario(dni):
             dni=i
             validez=True
     return dni,validez
+
+def buscar_genero(genero):
+    generos=bd_genero()
+    validez=False
+    for i in generos:
+        if i.nombre==genero:
+            genero=i
+            validez=True
+    return genero,validez
