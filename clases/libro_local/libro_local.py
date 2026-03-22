@@ -1,4 +1,6 @@
-class Libro:
+from abc import ABC
+
+class Libro(ABC):
     def __init__(self,titulo,autor,anyo):
         self.titulo=titulo
         self.autor=autor
