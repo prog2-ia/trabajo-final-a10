@@ -1,4 +1,4 @@
-class Valoracion:
+class Valoracion: #No utilizado de momento
     def __init__(self):
         # Atributo privado para evitar la manipulación
         self.__valoraciones = {} # Diccionario sobre las valoraciones de cada libro

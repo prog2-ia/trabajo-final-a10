@@ -1,4 +1,4 @@
-class Favoritos:
+class Favoritos: #No utilizado de momento
     def __init__(self):
         self.favoritos = [] # Lista vacía donde se almacenarán los libros marcados como favoritos
 
