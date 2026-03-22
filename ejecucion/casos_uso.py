@@ -69,8 +69,8 @@ def crear_genero(nombre): #Crear un género
     bd_generos.append(genero)
     return genero
 
-def agregar_libro_genero(genero,libro,biblioteca): #Agregar un libro al género
-    genero.agregar(libro,biblioteca)
+def agregar_libro_genero(genero,libro): #Agregar un libro al género
+    genero.agregar(libro)
 
 def mostrar_info_genero(genero): #Mostrar información de un género
     print(genero.mostrar_info())

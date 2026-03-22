@@ -3,10 +3,7 @@ class Genero:
         self.nombre=nombre
         self.libros=[] # Lista vacía para guardar libros de ese género
 
-    def agregar(self,libro,biblioteca): # Método para agregar un libro de ese género
-        if libro.titulo not in biblioteca.libros: # Verifica primero que el libro exista en la biblioteca
-            print('El libro_local no existe en la biblioteca')
-            return
+    def agregar(self,libro): # Método para agregar un libro de ese género
         for i in self.libros: # Verifica si el libro ya está en la lista de su género
             if i==libro.titulo:
                 print('El libro_local ya existe en este género')
