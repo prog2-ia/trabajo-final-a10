@@ -1,18 +1,12 @@
-from clases.biblioteca.biblioteca import Biblioteca
 from clases.libro_local.fisico_libro import Fisico
 from clases.libro_local.digital_libro import Digital
 from clases.persona_local.empleado_persona import Empleado
 from clases.persona_local.usuario_persona import Usuario
 from clases.genero.genero import Genero
-
+from ejecucion.objetos import bd_libro, bd_empleado, bd_usuario
 
 
 #Biblioteca
-def crear_biblio():
-    nombre=input('Introduce el nombre: ')
-    biblioteca=Biblioteca(nombre)
-    return biblioteca
-
 def agregar_libro_biblio(biblioteca,libro):
     biblioteca.agregar_libro(libro)
 
@@ -25,23 +19,14 @@ def mostrar_info_biblio(biblioteca):
 
 
 #Libro
-def crear_libro_fisico():
-    titulo=input('Introduce el titulo: ')
-    autor=input('Introduce el autor: ')
-    anyo=int(input('Introduce el año: '))
-    estanteria=input('Introduce la estanteria: ')
+def crear_libro_fisico(titulo,autor,anyo,estanteria):
     libro=Fisico(titulo,autor,anyo,estanteria)
     return libro
 
 def reportar_condicion_libro(libro,condicion):
     libro.reportar_condicion(condicion)
 
-def crear_libro_digital():
-    titulo=input('Introduce el titulo: ')
-    autor=input('Introduce el autor: ')
-    anyo=int(input('Introduce el año: '))
-    formato=input('Introduce el formato: ')
-    url=input('Introduce el url: ')
+def crear_libro_digital(titulo,autor,anyo,formato,url):
     libro=Digital(titulo,autor,anyo,formato,url)
     return libro
 
@@ -83,3 +68,33 @@ def agregar_libro_genero(genero,libro,biblioteca):
 
 def mostrar_info_genero(genero):
     print(genero.mostrar_info())
+
+
+
+#Funciones especiales
+def buscar_titulo_libro(libro):
+    libros=bd_libro()
+    validez=False
+    for i in libros:
+        if i.titulo==libro:
+            libro=i
+            validez=True
+    return libro,validez
+
+def buscar_empleado(dni):
+    empleados=bd_empleado()
+    validez=False
+    for i in empleados:
+        if i.dni==dni:
+            dni=i
+            validez=True
+    return dni,validez
+
+def buscar_usuario(dni):
+    usuarios=bd_usuario()
+    validez=False
+    for i in usuarios:
+        if i.dni==dni:
+            dni=i
+            validez=True
+    return dni,validez
