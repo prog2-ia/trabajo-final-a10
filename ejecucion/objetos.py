@@ -7,17 +7,16 @@ from clases.genero.genero import Genero
 
 def bd_biblioteca():
     biblioteca=Biblioteca('Biblioteca Central')
+    for i in bd_libro():
+        biblioteca.agregar_libro(i)
     return biblioteca
 
-def bd_libro_fisico():
+def bd_libro():
     libro_fis1=Fisico('Don Quijote de la Mancha','Miguel de Cervantes',1605,'A1')
     libro_fis2=Fisico('1984','George Orwell',1949,'B2')
-    return [libro_fis1,libro_fis2]
-
-def bd_libro_digital():
     libro_dig1=Digital('Clean Code', 'Robert C. Martin', 2008, 'PDF', 'https://descarga.com/cleancode')
     libro_dig2=Digital('Python Crash Course', 'Eric Matthes', 2019, 'EPUB', 'https://biblioteca.com/pythoncrashcourse')
-    return [libro_dig1,libro_dig2]
+    return [libro_fis1,libro_fis2,libro_dig1,libro_dig2]
 
 def bd_empleado():
     empleado1=Empleado('11111111A','Ana','Garcia',35,'EMP001','bibliotecario')
