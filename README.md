@@ -83,16 +83,84 @@ Los libros pueden clasificarse por **género literario**, que se gestiona median
 
 ---
 
-## ▶️ Ejecución del programa
+## 🛠️ Instalación y ejecución
 
-1. Descargar o clonar el proyecto completo.
+Sigue estos pasos para configurar y ejecutar el proyecto en Linux:
 
-2. Abrir una terminal en la carpeta raíz del proyecto.
+### 1️⃣ Clonar el repositorio
 
-3. Ejecutar el programa con:
+```plaintext
+git clone https://github.com/prog2-ia/trabajo-final-a10.git
+cd trabajo-final-a10
+```
 
-```bash
-python ejecucion/main.py
+### 2️⃣ Instalar Python (solo si no lo tienes, en este caso vamos a usar python 3)
+
+```plaintext
+sudo apt update
+sudo apt install python3 python3-pip
+```
+
+### 3️⃣ Instalar dependencias (en este caso no es necesario, ya que el proyecto no requiere ninguna)
+
+```plaintext
+pip3 install -r requirements.txt
+```
+
+### 4️⃣ Ejecutar el programa
+
+Desde la raíz del proyecto:
+
+```plaintext
+python3 -m ejecucion.main
+```
+
+---
+
+## ▶️ Uso
+
+Una vez ejecutado el programa:
+
+```plaintext
+python3 -m ejecucion.main
+```
+
+El sistema mostrará un menú con las distintas opciones disponibles como consultar libros, prestar un libro, etc.
+
+---
+
+## 📚 Ejemplos
+
+### 📖 Añadir un libro
+
+```plaintext
+Consultar libros
+1. Crear un libro físico
+2. Crear un libro digital
+3. Reportar la condición de un libro físico
+4. Mostrar información de un libro
+5. Volver
+¿Qué deseas hacer hoy? (Introduce un número): 1
+Introduce el titulo: La Celestina
+Introduce el autor: Fernando de Rojas
+Introduce el año: 1500
+Introduce la estanteria: A2
+Libro físico "La Celestina" creado correctamente
+
+```
+
+### 🔍 Buscar un libro
+
+```plaintext
+Consultar libros
+1. Crear un libro físico
+2. Crear un libro digital
+3. Reportar la condición de un libro físico
+4. Mostrar información de un libro
+5. Volver
+¿Qué deseas hacer hoy? (Introduce un número): 4
+Introduce el libro: Don Quijote de la Mancha
+Título: Don Quijote de la Mancha | Autor: Miguel de Cervantes | Año: 1605 | Género: Sin género | Estado: Disponible | Ubicación: Estantería A1 | Condición: Excelente
 ```
 
 ---
@@ -102,17 +170,6 @@ python ejecucion/main.py
 * **Python 3**
 * Programación Orientada a Objetos (POO)
 * Organización modular de código
-
----
-
-## 🎯 Objetivo del proyecto
-
-El objetivo de este proyecto es practicar:
-
-* Diseño de clases y herencia
-* Organización de proyectos en Python
-* Importación de módulos entre carpetas
-* Modelado de sistemas mediante POO
 
 ---
 
