@@ -18,8 +18,8 @@ proyecto/
 │   │
 │   ├─ genero/
 │   │   ├─ genero.py
-│   │   ├─ favoritos_genero.py
-│   │   └─ valoracion_genero.py
+│   │   ├─ favoritos.py
+│   │   └─ valoracion.py
 │   │
 │   ├─ libro/
 │   │   ├─ libro_local.py
@@ -33,7 +33,9 @@ proyecto/
 │
 └─ ejecucion/
     ├─ main.py
+    ├─ casos_uso.py
     └─ objetos.py
+    
 ```
 
 ---
@@ -116,4 +118,10 @@ El objetivo de este proyecto es practicar:
 
 ## 👨‍💻 Autor
 
-Proyecto desarrollado con fines educativos para practicar **estructura de proyectos en Python y programación orientada a objetos**.
+Proyecto desarrollado por el grupo A10 para la asignatura de Programación II.
+
+---
+
+## 📄 Licencia
+
+Este proyecto es de uso académico y educativo.

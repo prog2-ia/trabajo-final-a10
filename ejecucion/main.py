@@ -1,5 +1,5 @@
 from ejecucion.casos_uso import agregar_libro_biblio, eliminar_libro_biblio, mostrar_info_biblio, crear_libro_fisico, \
-    crear_libro_digital, reportar_condicion_libro, buscar_titulo_libro, mostrar_info_libro, crear_empleado, \
+    crear_libro_digital, reportar_condicion_libro, buscar_libro, mostrar_info_libro, crear_empleado, \
     crear_usuario, gestionar_registro_empleado, buscar_empleado, buscar_usuario, prestar_libro_usuario, \
     devolver_libro_usuario, mostrar_info_persona, crear_genero, agregar_libro_genero, buscar_genero, mostrar_info_genero
 from ejecucion.objetos import biblioteca_central, bd_libros, bd_empleados, bd_usuarios, bd_generos
@@ -24,15 +24,16 @@ def main():
             print('1. Agregar libros ya existentes a la biblioteca')
             print('2. Eliminar libros de la biblioteca')
             print('3. Mostrar información de la biblioteca')
+            print('4. Volver')
             sub_eleccion=0
-            while sub_eleccion not in [1,2,3]:
+            while sub_eleccion not in [1,2,3,4]:
                 sub_eleccion=int(input('¿Qué deseas hacer hoy? (Introduce un número): '))
-                if sub_eleccion not in [1,2,3]:
+                if sub_eleccion not in [1,2,3,4]:
                     print('Error: opción inválida')
 
             if sub_eleccion==1:
                 titulo=input('Introduce el libro que deseas agregar: ')
-                libro,validez=buscar_titulo_libro(titulo)
+                libro,validez=buscar_libro(titulo)
                 if validez:
                     agregar_libro_biblio(biblioteca_central,libro)
                     print('Libro agregado correctamente')
@@ -41,15 +42,18 @@ def main():
 
             elif sub_eleccion==2:
                 titulo=input('Introduce el libro que deseas eliminar: ')
-                libro,validez=buscar_titulo_libro(titulo)
+                libro,validez=buscar_libro(titulo)
                 if validez:
                     eliminar_libro_biblio(biblioteca_central,libro)
                     print('Libro eliminado correctamente')
                 else:
                     print('Libro no existente')
 
-            else:
+            elif sub_eleccion==3:
                 mostrar_info_biblio(biblioteca_central)
+
+            else:
+                continue
 
         elif eleccion==2:
             print('Consultar libros')
@@ -57,10 +61,11 @@ def main():
             print('2. Crear un libro digital')
             print('3. Reportar la condición de un libro físico')
             print('4. Mostrar información de un libro')
+            print('5. Volver')
             sub_eleccion=0
-            while sub_eleccion not in [1,2,3,4]:
+            while sub_eleccion not in [1,2,3,4,5]:
                 sub_eleccion=int(input('¿Qué deseas hacer hoy? (Introduce un número): '))
-                if sub_eleccion not in [1,2,3,4]:
+                if sub_eleccion not in [1,2,3,4,5]:
                     print('Error: opción inválida')
 
             if sub_eleccion==1:
@@ -83,20 +88,23 @@ def main():
             elif sub_eleccion==3:
                 titulo=input('Introduce el libro: ')
                 condicion=input('Introduce la nueva condición: ')
-                libro,validez=buscar_titulo_libro(titulo)
+                libro,validez=buscar_libro(titulo)
                 if validez:
                     reportar_condicion_libro(libro,condicion)
                     print('Condición reportada correctamente')
                 else:
                     print('Libro no existente')
 
-            else:
+            elif sub_eleccion==4:
                 titulo=input('Introduce el libro: ')
-                libro,validez=buscar_titulo_libro(titulo)
+                libro,validez=buscar_libro(titulo)
                 if validez:
                     mostrar_info_libro(libro)
                 else:
                     print('Libro no existente')
+
+            else:
+                continue
 
         elif eleccion==3:
             print('Consultar personas')
@@ -106,10 +114,11 @@ def main():
             print('4. Prestar un libro')
             print('5. Devolver un libro')
             print('6. Mostrar información de una persona')
+            print('7. Volver')
             sub_eleccion=0
-            while sub_eleccion not in [1,2,3,4,5,6]:
+            while sub_eleccion not in [1,2,3,4,5,6,7]:
                 sub_eleccion=int(input('¿Qué deseas hacer hoy? (Introduce un número): '))
-                if sub_eleccion not in [1,2,3,4,5,6]:
+                if sub_eleccion not in [1,2,3,4,5,6,7]:
                     print('Error: opción inválida')
 
             if sub_eleccion==1:
@@ -133,7 +142,7 @@ def main():
             elif sub_eleccion==3:
                 titulo=input('Introduce el libro: ')
                 empleado=input('Introduce el dni del empleado: ')
-                libro,validez=buscar_titulo_libro(titulo)
+                libro,validez=buscar_libro(titulo)
                 if validez:
                     dni,validez=buscar_empleado(empleado)
                     if validez:
@@ -146,7 +155,7 @@ def main():
             elif sub_eleccion==4:
                 titulo=input('Introduce el libro: ')
                 usuario=input('Introduce el DNI del usuario: ')
-                libro,validez=buscar_titulo_libro(titulo)
+                libro,validez=buscar_libro(titulo)
                 if validez:
                     dni,validez=buscar_usuario(usuario)
                     if validez:
@@ -159,7 +168,7 @@ def main():
             elif sub_eleccion==5:
                 titulo=input('Introduce el libro: ')
                 usuario=input('Introduce el DNI del usuario: ')
-                libro,validez=buscar_titulo_libro(titulo)
+                libro,validez=buscar_libro(titulo)
                 if validez:
                     dni,validez=buscar_usuario(usuario)
                     if validez:
@@ -181,15 +190,19 @@ def main():
                     else:
                         print('Persona no existente')
 
+            else:
+                continue
+
         elif eleccion==4:
             print('Consultar géneros')
             print('1. Crear un género')
             print('2. Agregar un género a un libro')
             print('3. Mostrar información de un género')
+            print('4. Volver')
             sub_eleccion=0
-            while sub_eleccion not in [1,2,3]:
+            while sub_eleccion not in [1,2,3,4]:
                 sub_eleccion=int(input('¿Qué deseas hacer hoy? (Introduce un número): '))
-                if sub_eleccion not in [1,2,3]:
+                if sub_eleccion not in [1,2,3,4]:
                     print('Error: opción inválida')
 
             if sub_eleccion==1:
@@ -200,7 +213,7 @@ def main():
             elif sub_eleccion==2:
                 titulo=input('Introduce el libro: ')
                 nombre_gen=input('Introduce el nombre del género: ')
-                libro,validez=buscar_titulo_libro(titulo)
+                libro,validez=buscar_libro(titulo)
                 if validez:
                     genero,validez=buscar_genero(nombre_gen)
                     if validez:
@@ -211,7 +224,7 @@ def main():
                 else:
                     print('Libro no existente')
 
-            else:
+            elif sub_eleccion==3:
                 nombre_gen=input('Introduce el nombre del género: ')
                 genero,validez=buscar_genero(nombre_gen)
                 if validez:
@@ -219,12 +232,16 @@ def main():
                 else:
                     print('Género no existente')
 
+            else:
+                continue
+
         elif eleccion==5:
             print('Consultar datos existentes')
             print('1. Libros')
             print('2. Empleados')
             print('3. Usuarios')
             print('4. Géneros')
+            print('5. Volver')
             sub_eleccion=0
             while sub_eleccion not in [1,2,3,4,5]:
                 sub_eleccion=int(input('¿Qué deseas hacer hoy? (Introduce un número): '))
@@ -258,6 +275,9 @@ def main():
                         print(i.nombre)
                     else:
                         print(i.nombre,end=' | ')
+
+            else:
+                continue
 
         else:
             break

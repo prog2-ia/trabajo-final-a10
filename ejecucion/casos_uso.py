@@ -7,78 +7,78 @@ from ejecucion.objetos import bd_libros, bd_empleados, bd_usuarios, bd_generos
 
 
 
-#Biblioteca
-def agregar_libro_biblio(biblioteca,libro):
+#Funciones: la Biblioteca
+def agregar_libro_biblio(biblioteca,libro): #Agregar un libro a la Biblioteca
     biblioteca.agregar_libro(libro)
 
-def eliminar_libro_biblio(biblioteca,libro):
+def eliminar_libro_biblio(biblioteca,libro): #Eliminar un libro de la Biblioteca
     biblioteca.eliminar_libro(libro)
 
-def mostrar_info_biblio(biblioteca):
+def mostrar_info_biblio(biblioteca): #Mostrar información de la Biblioteca
     print(biblioteca.mostrar_info())
 
 
 
-#Libro
-def crear_libro_fisico(titulo,autor,anyo,estanteria):
+#Funciones: libros
+def crear_libro_fisico(titulo,autor,anyo,estanteria): #Crear un libro físico
     libro=Fisico(titulo,autor,anyo,estanteria)
     bd_libros.append(libro)
     return libro
 
-def reportar_condicion_libro(libro,condicion):
+def reportar_condicion_libro(libro,condicion): #Reportar la condición de un libro físico
     libro.reportar_condicion(condicion)
 
-def crear_libro_digital(titulo,autor,anyo,formato,url):
+def crear_libro_digital(titulo,autor,anyo,formato,url): #Crear un libro digital
     libro=Digital(titulo,autor,anyo,formato,url)
     bd_libros.append(libro)
     return libro
 
-def mostrar_info_libro(libro):
+def mostrar_info_libro(libro): #Mostrar información de un libro
     print(libro.mostrar_info())
 
 
 
-#Persona
-def crear_empleado(dni,nombre,apellido,edad,id_empleado,puesto):
+#Funciones: personas
+def crear_empleado(dni,nombre,apellido,edad,id_empleado,puesto): #Crear un empleado
     empleado=Empleado(dni,nombre,apellido,edad,id_empleado,puesto)
     bd_empleados.append(empleado)
     return empleado
 
-def gestionar_registro_empleado(empleado,biblioteca,libro):
+def gestionar_registro_empleado(empleado,biblioteca,libro): #Gestionar registro (solo algunos empleados)
     empleado.gestionar_registro(biblioteca,libro)
 
-def crear_usuario(dni,nombre,apellido,edad):
+def crear_usuario(dni,nombre,apellido,edad): #Crear un usuario
     usuario=Usuario(dni,nombre,apellido,edad)
     bd_usuarios.append(usuario)
     return usuario
 
-def prestar_libro_usuario(usuario,libro):
+def prestar_libro_usuario(usuario,libro): #Prestar un libro
     usuario.prestar_libro(libro)
 
-def devolver_libro_usuario(usuario,libro):
+def devolver_libro_usuario(usuario,libro): #Devolver un libro
     usuario.devolver_libro(libro)
 
-def mostrar_info_persona(persona):
+def mostrar_info_persona(persona): #Mostrar información de una persona
     print(persona.mostrar_info())
 
 
 
-#Género
-def crear_genero(nombre):
+#Funciones: géneros
+def crear_genero(nombre): #Crear un género
     genero=Genero(nombre)
     bd_generos.append(genero)
     return genero
 
-def agregar_libro_genero(genero,libro,biblioteca):
+def agregar_libro_genero(genero,libro,biblioteca): #Agregar un libro al género
     genero.agregar(libro,biblioteca)
 
-def mostrar_info_genero(genero):
+def mostrar_info_genero(genero): #Mostrar información de un género
     print(genero.mostrar_info())
 
 
 
-#Funciones especiales
-def buscar_titulo_libro(libro):
+#Funciones: búsqueda, básicamente lo que hace es devolver la información completa de algo dado solo su título, nombre, etc.
+def buscar_libro(libro):
     libros=bd_libros
     validez=False
     for i in libros:
