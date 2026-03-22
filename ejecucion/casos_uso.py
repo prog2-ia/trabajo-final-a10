@@ -3,7 +3,8 @@ from clases.libro_local.digital_libro import Digital
 from clases.persona_local.empleado_persona import Empleado
 from clases.persona_local.usuario_persona import Usuario
 from clases.genero.genero import Genero
-from ejecucion.objetos import bd_libro, bd_empleado, bd_usuario, bd_genero
+from ejecucion.objetos import bd_libros, bd_empleados, bd_usuarios, bd_generos
+
 
 
 #Biblioteca
@@ -21,6 +22,7 @@ def mostrar_info_biblio(biblioteca):
 #Libro
 def crear_libro_fisico(titulo,autor,anyo,estanteria):
     libro=Fisico(titulo,autor,anyo,estanteria)
+    bd_libros.append(libro)
     return libro
 
 def reportar_condicion_libro(libro,condicion):
@@ -28,6 +30,7 @@ def reportar_condicion_libro(libro,condicion):
 
 def crear_libro_digital(titulo,autor,anyo,formato,url):
     libro=Digital(titulo,autor,anyo,formato,url)
+    bd_libros.append(libro)
     return libro
 
 def mostrar_info_libro(libro):
@@ -38,6 +41,7 @@ def mostrar_info_libro(libro):
 #Persona
 def crear_empleado(dni,nombre,apellido,edad,id_empleado,puesto):
     empleado=Empleado(dni,nombre,apellido,edad,id_empleado,puesto)
+    bd_empleados.append(empleado)
     return empleado
 
 def gestionar_registro_empleado(empleado,biblioteca,libro):
@@ -45,6 +49,7 @@ def gestionar_registro_empleado(empleado,biblioteca,libro):
 
 def crear_usuario(dni,nombre,apellido,edad):
     usuario=Usuario(dni,nombre,apellido,edad)
+    bd_usuarios.append(usuario)
     return usuario
 
 def prestar_libro_usuario(usuario,libro):
@@ -61,6 +66,7 @@ def mostrar_info_persona(persona):
 #Género
 def crear_genero(nombre):
     genero=Genero(nombre)
+    bd_generos.append(genero)
     return genero
 
 def agregar_libro_genero(genero,libro,biblioteca):
@@ -73,7 +79,7 @@ def mostrar_info_genero(genero):
 
 #Funciones especiales
 def buscar_titulo_libro(libro):
-    libros=bd_libro()
+    libros=bd_libros
     validez=False
     for i in libros:
         if i.titulo==libro:
@@ -82,7 +88,7 @@ def buscar_titulo_libro(libro):
     return libro,validez
 
 def buscar_empleado(dni):
-    empleados=bd_empleado()
+    empleados=bd_empleados
     validez=False
     for i in empleados:
         if i.dni==dni:
@@ -91,7 +97,7 @@ def buscar_empleado(dni):
     return dni,validez
 
 def buscar_usuario(dni):
-    usuarios=bd_usuario()
+    usuarios=bd_usuarios
     validez=False
     for i in usuarios:
         if i.dni==dni:
@@ -100,7 +106,7 @@ def buscar_usuario(dni):
     return dni,validez
 
 def buscar_genero(genero):
-    generos=bd_genero()
+    generos=bd_generos
     validez=False
     for i in generos:
         if i.nombre==genero:
