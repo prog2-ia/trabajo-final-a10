@@ -20,9 +20,9 @@ def main():
             if eleccion not in ['1','2','3','4','5','6']:
                 print('Error: opción inválida')
 
-        if eleccion=='1':
+        if eleccion=='1': #Consultar la Biblioteca
             print()
-            print('Consultar la biblioteca')
+            print('Consultar la Biblioteca')
             print('1. Agregar libros ya existentes a la biblioteca')
             print('2. Eliminar libros de la biblioteca')
             print('3. Mostrar información de la biblioteca')
@@ -33,7 +33,7 @@ def main():
                 if sub_eleccion not in ['1','2','3','4']:
                     print('Error: opción inválida')
 
-            if sub_eleccion=='1':
+            if sub_eleccion=='1': #Agregar un libro de la Biblioteca
                 titulo=input('Introduce el libro que deseas agregar: ')
                 libro,validez=buscar_libro(titulo)
                 if validez:
@@ -42,7 +42,7 @@ def main():
                 else:
                     print('Libro no existente')
 
-            elif sub_eleccion=='2':
+            elif sub_eleccion=='2': #Eliminar un libro de la Biblioteca
                 titulo=input('Introduce el libro que deseas eliminar: ')
                 libro,validez=buscar_libro(titulo)
                 if validez:
@@ -51,13 +51,13 @@ def main():
                 else:
                     print('Libro no existente')
 
-            elif sub_eleccion=='3':
+            elif sub_eleccion=='3': #Mostrar información de la Biblioteca
                 mostrar_info_biblio(biblioteca_central)
 
             else:
                 continue
 
-        elif eleccion=='2':
+        elif eleccion=='2': #Consultar libros
             print()
             print('Consultar libros')
             print('1. Crear un libro físico')
@@ -71,7 +71,7 @@ def main():
                 if sub_eleccion not in ['1','2','3','4','5']:
                     print('Error: opción inválida')
 
-            if sub_eleccion=='1':
+            if sub_eleccion=='1': #Crear un libro físico
                 titulo=input('Introduce el titulo: ')
                 autor=input('Introduce el autor: ')
                 anyo=input('Introduce el año: ')
@@ -79,7 +79,7 @@ def main():
                 crear_libro_fisico(titulo,autor,anyo,estanteria)
                 print(f'Libro físico "{titulo}" creado correctamente')
 
-            elif sub_eleccion=='2':
+            elif sub_eleccion=='2': #Crear un libro digital
                 titulo=input('Introduce el titulo: ')
                 autor=input('Introduce el autor: ')
                 anyo=input('Introduce el año: ')
@@ -88,7 +88,7 @@ def main():
                 crear_libro_digital(titulo,autor,anyo,formato,url)
                 print(f'Libro digital "{titulo}" creado correctamente')
 
-            elif sub_eleccion=='3':
+            elif sub_eleccion=='3': #Reportar la condición de un libro físico
                 titulo=input('Introduce el libro: ')
                 condicion=input('Introduce la nueva condición: ')
                 libro,validez=buscar_libro(titulo)
@@ -98,7 +98,7 @@ def main():
                 else:
                     print('Libro no existente')
 
-            elif sub_eleccion=='4':
+            elif sub_eleccion=='4': #Mostrar información de un libro
                 titulo=input('Introduce el libro: ')
                 libro,validez=buscar_libro(titulo)
                 if validez:
@@ -109,12 +109,12 @@ def main():
             else:
                 continue
 
-        elif eleccion=='3':
+        elif eleccion=='3': #Consultar personas y préstamos
             print()
-            print('Consultar personas')
+            print('Consultar personas y préstamos')
             print('1. Crear un empleado')
             print('2. Crear un usuario')
-            print('3. Gestionar registros (solo para empleados con roles correspondientes)')
+            print('3. Gestionar registros (solo para empleados administradores y bibliotecarios)')
             print('4. Prestar un libro')
             print('5. Devolver un libro')
             print('6. Mostrar información de una persona')
@@ -125,7 +125,7 @@ def main():
                 if sub_eleccion not in ['1','2','3','4','5','6','7']:
                     print('Error: opción inválida')
 
-            if sub_eleccion=='1':
+            if sub_eleccion=='1': #Crear un empleado
                 dni=input('Introduce el DNI: ')
                 nombre=input('Introduce el nombre: ')
                 apellido=input('Introduce el apellido: ')
@@ -135,7 +135,7 @@ def main():
                 crear_empleado(dni,nombre,apellido,edad,id_empleado,puesto)
                 print(f'Empleado "{nombre} {apellido}" creado correctamente')
 
-            elif sub_eleccion=='2':
+            elif sub_eleccion=='2': #Crear un usuario
                 dni=input('Introduce el DNI: ')
                 nombre=input('Introduce el nombre: ')
                 apellido=input('Introduce el apellido: ')
@@ -143,7 +143,7 @@ def main():
                 crear_usuario(dni,nombre,apellido,edad)
                 print(f'Usuario "{nombre} {apellido}" creado correctamente')
 
-            elif sub_eleccion=='3':
+            elif sub_eleccion=='3': #Gestionar registro
                 titulo=input('Introduce el libro: ')
                 empleado=input('Introduce el dni del empleado: ')
                 libro,validez=buscar_libro(titulo)
@@ -156,7 +156,7 @@ def main():
                 else:
                     print('Libro no existente')
 
-            elif sub_eleccion=='4':
+            elif sub_eleccion=='4': #Prestar un libro
                 titulo=input('Introduce el libro: ')
                 usuario=input('Introduce el DNI del usuario: ')
                 libro,validez=buscar_libro(titulo)
@@ -169,7 +169,7 @@ def main():
                 else:
                     print('Libro no existente')
 
-            elif sub_eleccion=='5':
+            elif sub_eleccion=='5': #Devolver un libro
                 titulo=input('Introduce el libro: ')
                 usuario=input('Introduce el DNI del usuario: ')
                 libro,validez=buscar_libro(titulo)
@@ -182,7 +182,7 @@ def main():
                 else:
                     print('Libro no existente')
 
-            elif sub_eleccion=='6':
+            elif sub_eleccion=='6': #Mostrar información de un libro
                 persona=input('Introduce el DNI de la persona: ')
                 dni,validez=buscar_empleado(persona)
                 if validez:
@@ -197,7 +197,7 @@ def main():
             else:
                 continue
 
-        elif eleccion=='4':
+        elif eleccion=='4': #Consultar géneros
             print()
             print('Consultar géneros')
             print('1. Crear un género')
@@ -210,12 +210,12 @@ def main():
                 if sub_eleccion not in ['1','2','3','4']:
                     print('Error: opción inválida')
 
-            if sub_eleccion=='1':
+            if sub_eleccion=='1': #Crear un género
                 genero=input('Introduce el nombre del género: ')
                 crear_genero(genero)
                 print(f'Género "{genero}" creado correctamente')
 
-            elif sub_eleccion=='2':
+            elif sub_eleccion=='2': #Agregar un libro a un género
                 titulo=input('Introduce el libro: ')
                 nombre_gen=input('Introduce el nombre del género: ')
                 libro,validez=buscar_libro(titulo)
@@ -229,7 +229,7 @@ def main():
                 else:
                     print('Libro no existente')
 
-            elif sub_eleccion=='3':
+            elif sub_eleccion=='3': #Mostrar información de un género
                 nombre_gen=input('Introduce el nombre del género: ')
                 genero,validez=buscar_genero(nombre_gen)
                 if validez:
@@ -240,7 +240,7 @@ def main():
             else:
                 continue
 
-        elif eleccion=='5':
+        elif eleccion=='5': #Consultar datos existentes de la base de datos
             print()
             print('Consultar datos existentes')
             print('1. Libros')
@@ -254,28 +254,28 @@ def main():
                 if sub_eleccion not in ['1','2','3','4','5']:
                     print('Error: opción inválida')
 
-            if sub_eleccion=='1':
+            if sub_eleccion=='1': #Mostrar libros
                 for i in bd_libros:
                     if i==bd_libros[-1]:
                         print(i.titulo)
                     else:
                         print(i.titulo,end=' | ')
 
-            elif sub_eleccion=='2':
+            elif sub_eleccion=='2': #Mostrar empleados
                 for i in bd_empleados:
                     if i==bd_empleados[-1]:
                         print(i.nombre,i.apellido)
                     else:
                         print(i.nombre,i.apellido,end=' | ')
 
-            elif sub_eleccion=='3':
+            elif sub_eleccion=='3': #Mostrar usuarios
                 for i in bd_usuarios:
                     if i==bd_usuarios[-1]:
                         print(i.nombre,i.apellido)
                     else:
                         print(i.nombre,i.apellido,end=' | ')
 
-            elif sub_eleccion=='4':
+            elif sub_eleccion=='4': #Mostrar géneros
                 for i in bd_generos:
                     if i==bd_generos[-1]:
                         print(i.nombre)

@@ -77,7 +77,7 @@ def mostrar_info_genero(genero): #Mostrar información de un género
 
 
 
-#Funciones: búsqueda, básicamente lo que hace es devolver la información completa de algo dado solo su título, nombre, etc.
+#Funciones de búsqueda: básicamente lo que hacen es devolver la información completa de algo dado solo su título, nombre, etc.
 def buscar_libro(libro):
     libros=bd_libros
     validez=False
