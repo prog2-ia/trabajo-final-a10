@@ -264,16 +264,16 @@ def main():
             elif sub_eleccion=='2': #Mostrar empleados
                 for i in bd_empleados:
                     if i==bd_empleados[-1]:
-                        print(i.nombre,i.apellido)
+                        print(i.dni)
                     else:
-                        print(i.nombre,i.apellido,end=' | ')
+                        print(i.dni,end=' | ')
 
             elif sub_eleccion=='3': #Mostrar usuarios
                 for i in bd_usuarios:
                     if i==bd_usuarios[-1]:
-                        print(i.nombre,i.apellido)
+                        print(i.dni)
                     else:
-                        print(i.nombre,i.apellido,end=' | ')
+                        print(i.dni,end=' | ')
 
             elif sub_eleccion=='4': #Mostrar géneros
                 for i in bd_generos:
