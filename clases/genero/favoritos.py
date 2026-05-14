@@ -1,6 +1,6 @@
-class Favoritos: #No utilizado de momento
+class Favoritos:
     def __init__(self):
-        self.favoritos = [] # Lista vacía donde se almacenarán los libros marcados como favoritos
+        self.favoritos=[] # Lista vacía donde se almacenarán los libros marcados como favoritos
 
     def marcar_favorito(self, biblioteca, libro): # Método que recibe la biblioteca para marcar un libro como favorito de esta
         # Verifica que el libro exista en la biblioteca y que no haya sido añadido previamente a favoritos
