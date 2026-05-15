@@ -1,8 +1,8 @@
 class Valoracion:
-    def __init__(self):
-        self.valoraciones={} # Diccionario sobre las valoraciones de cada libro
+    def __init__(self) -> None:
+        self.valoraciones: dict = {} # Diccionario sobre las valoraciones de cada libro
 
-    def valorar(self, biblioteca, libro, puntuacion): # Método que recibe la biblioteca para valorar un libro de esta
+    def valorar(self, biblioteca, libro, puntuacion: int | float) -> None: # Método que recibe la biblioteca para valorar un libro de esta
         if libro not in biblioteca.libros: # Comprueba que el libro exista dentro de la biblioteca proporcionada
             print(f"Error: El libro '{libro}' no pertenece a la biblioteca {biblioteca.nombre}")
             return # Sale si el libro no existe
@@ -13,6 +13,6 @@ class Valoracion:
 
         self.valoraciones[libro] = puntuacion # Si todo se cumple, agrega la valoración al diccionario
 
-    def mostrar_valoraciones(self): # Método para mostrar las valoraciones
+    def mostrar_valoraciones(self) -> None: # Método para mostrar las valoraciones
         for libro in self.valoraciones:
             print(libro, ":", self.valoraciones[libro])
