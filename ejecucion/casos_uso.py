@@ -144,12 +144,12 @@ def guardar_sistema()->None:
         'generos': bd_generos
     }
 
-    with open('../datos/biblioteca.dat', 'wb') as fichero:
+    with open('biblioteca.dat','wb') as fichero:
         pickle.dump(datos, fichero)
 
 def cargar_sistema()->dict:
     try:
-        with open('../datos/biblioteca.dat', 'rb') as fichero:
+        with open('biblioteca.dat','rb') as fichero:
             return pickle.load(fichero)
 
     except FileNotFoundError:
