@@ -5,7 +5,7 @@ from clases.libro_local.digital_libro import Digital
 from clases.persona_local.empleado_persona import Empleado
 from clases.persona_local.usuario_persona import Usuario
 from clases.genero.genero import Genero
-from ejecucion.objetos import bd_libros, bd_empleados, bd_usuarios, bd_generos
+from ejecucion.objetos import bd_libros, bd_empleados, bd_usuarios, bd_generos, sistema_valoraciones
 
 #Funciones: la Biblioteca
 def agregar_libro_biblio(biblioteca, libro) -> None: #Agregar un libro a la Biblioteca
@@ -80,6 +80,14 @@ def agregar_libro_genero(genero, libro) -> None: #Agregar un libro al género
 
 def mostrar_info_genero(genero) -> None: #Mostrar información de un género
     print(genero.mostrar_info())
+
+#Funciones: valoraciones
+def valorar_libro(libro,valoracion) -> None: #Valorar un libro
+    sistema_valoraciones.valorar(libro,valoracion)
+    guardar_sistema()
+
+def mostrar_info_valoraciones() -> None:
+    sistema_valoraciones.mostrar_valoraciones()
 
 #Funciones de búsqueda: básicamente lo que hacen es devolver la información completa de algo dado solo su título, nombre, etc.
 def buscar_libro(libro: str) -> tuple:
