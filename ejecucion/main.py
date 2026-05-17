@@ -2,7 +2,8 @@ from ejecucion.casos_uso import agregar_libro_biblio, eliminar_libro_biblio, mos
     crear_libro_digital, reportar_condicion_libro, buscar_libro, mostrar_info_libro, crear_empleado, \
     crear_usuario, gestionar_registro_empleado, buscar_empleado, buscar_usuario, prestar_libro_usuario, \
     devolver_libro_usuario, mostrar_info_persona, crear_genero, agregar_libro_genero, buscar_genero, \
-    mostrar_info_genero, pedir_entero, cargar_sistema, exportar_informe_txt, guardar_sistema
+    mostrar_info_genero, pedir_entero, cargar_sistema, exportar_informe_txt, guardar_sistema, valorar_libro, \
+    mostrar_info_valoraciones
 from ejecucion.objetos import biblioteca_central, bd_libros, bd_empleados, bd_usuarios, bd_generos
 
 def main()->None:
@@ -13,15 +14,16 @@ def main()->None:
         print('2. Consultar libros')
         print('3. Consultar personas y préstamos')
         print('4. Consultar géneros')
-        print('5. Consultar datos existentes')
-        print('6. Exportar datos')
-        print('7. Salir')
+        print('5. Consultar valoraciones')
+        print('6. Consultar datos existentes')
+        print('7. Exportar datos')
+        print('8. Salir')
 
         eleccion:int=0
 
-        while eleccion not in [1,2,3,4,5,6,7]:
+        while eleccion not in [1,2,3,4,5,6,7,8]:
             eleccion=pedir_entero('¿Qué deseas hacer hoy? (Introduce un número): ')
-            if eleccion not in [1,2,3,4,5,6,7]:
+            if eleccion not in [1,2,3,4,5,6,7,8]:
                 print('Error: opción inválida')
 
         if eleccion==1: #Consultar la Biblioteca
@@ -279,7 +281,37 @@ def main()->None:
             else:
                 continue
 
-        elif eleccion==5: #Consultar datos existentes de la base de datos
+        elif eleccion==5:
+            print()
+            print('Consultar valoraciones')
+            print('1. Valorar un libro')
+            print('2. Mostrar valoraciones de los libros')
+            print('3. Volver')
+
+            sub_eleccion:int=0
+
+            while sub_eleccion not in [1,2,3]:
+                sub_eleccion=pedir_entero('¿Qué deseas hacer hoy? (Introduce un número): ')
+                if sub_eleccion not in [1,2,3]:
+                    print('Error: opción inválida')
+
+            if sub_eleccion==1:  #Valorar un libro
+                titulo: str = input('Introduce el libro: ')
+                valoracion: int = pedir_entero('Introduce la valoración: ')
+                libro, validez = buscar_libro(titulo)
+
+                if validez:
+                    valorar_libro(libro, valoracion)
+                else:
+                    print('Libro no existente')
+
+            elif sub_eleccion==2: #Mostrar las valoraciones
+                mostrar_info_valoraciones()
+
+            else:
+                continue
+
+        elif eleccion==6: #Consultar datos existentes de la base de datos
             print()
             print('Consultar datos existentes')
             print('1. Libros')
@@ -326,7 +358,7 @@ def main()->None:
             else:
                 continue
 
-        elif eleccion==6:
+        elif eleccion==7:
             exportar_informe_txt()
             print('Datos exportados con éxito')
 
