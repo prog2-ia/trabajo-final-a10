@@ -1,137 +1,254 @@
-# Sistema de Gestión de Biblioteca 📚
+# Sistema de Gestión de Biblioteca Inteligente 📚
 
-Este proyecto es una simulación sencilla de un **sistema de gestión de biblioteca** desarrollado en Python utilizando **programación orientada a objetos (POO)**.
-Permite modelar distintos elementos de una biblioteca como libros físicos y digitales, usuarios, empleados y géneros.
+Este proyecto es una simulación de un **sistema de gestión de biblioteca inteligente** desarrollado en **Python 3** utilizando **programación orientada a objetos (POO)** y una arquitectura modular.
+
+El sistema permite gestionar:
+
+- libros físicos y digitales,
+- usuarios y empleados,
+- préstamos,
+- géneros literarios,
+- persistencia de datos mediante ficheros binarios,
+- y exportación de información en archivos de texto.
 
 ---
 
-## 📂 Estructura del proyecto
+# 📂 Estructura del proyecto
 
-El proyecto está organizado en módulos para separar las diferentes entidades del sistema.
-
-```
-proyecto/
+```plaintext
+trabajo-final-a10/
 │
 ├─ clases/
+│   │
 │   ├─ biblioteca/
 │   │   └─ biblioteca.py
 │   │
 │   ├─ genero/
-│   │   ├─ genero.py
-│   │   ├─ favoritos.py
-│   │   └─ valoracion.py
+│   │   └─ genero.py
 │   │
-│   ├─ libro/
+│   ├─ libro_local/
 │   │   ├─ libro_local.py
 │   │   ├─ fisico_libro.py
 │   │   └─ digital_libro.py
 │   │
-│   └─ persona/
-│       ├─ persona.py
-│       ├─ empleado_persona.py
-│       └─ usuario_persona.py
+│   ├─ persona_local/
+│   │   ├─ persona_local.py
+│   │   ├─ empleado_persona.py
+│   │   └─ usuario_persona.py
+│   │
+│   ├─ prestamo/
+│   │   └─ prestamos.py
+│   │
+│   └─ valoracion/
+│       └─ valoracion.py
 │
-└─ ejecucion/
+├─ ejecucion/
+│   ├─ biblioteca.dat
+│   ├─ casos_uso.py
     ├─ main.py
-    ├─ casos_uso.py
-    └─ objetos.py
-    
+│   └─ objetos.py
+│
+├─ README.md
+└─ requirements.txt
 ```
 
 ---
 
-## 🧩 Componentes principales
+# 🧩 Componentes principales
 
-### Biblioteca
+## 📚 Biblioteca
 
-Representa la biblioteca principal donde se gestionan los diferentes elementos del sistema.
+La clase `Biblioteca` representa la biblioteca principal del sistema y permite gestionar:
 
-### Libros
-
-Existen dos tipos de libros:
-
-* **Libro físico** (`Fisico`)
-  Contiene información sobre la ubicación en la biblioteca.
-
-* **Libro digital** (`Digital`)
-  Incluye el formato del archivo y el enlace de descarga.
-
-Ambos heredan de la clase base `Libro`.
+- libros disponibles,
+- registros,
+- consultas,
+- y organización general de recursos.
 
 ---
 
-### Personas
+# 📖 Libros
 
-El sistema distingue entre dos tipos de personas:
+El sistema implementa una jerarquía de libros basada en herencia.
 
-* **Empleado**
+## Libro físico (`Fisico`)
 
-  * Tiene un ID de empleado
-  * Tiene un rol dentro de la biblioteca
+Representa un libro físico almacenado en la biblioteca.
 
-* **Usuario**
+Incluye:
 
-  * Puede interactuar con los recursos de la biblioteca
-
-Ambos heredan de la clase base `Persona`.
-
----
-
-### Géneros
-
-Los libros pueden clasificarse por **género literario**, que se gestiona mediante las clases dentro del módulo `genero`.
+- ubicación en estantería,
+- condición física,
+- disponibilidad.
 
 ---
 
-## 🛠️ Instalación y ejecución
+## Libro digital (`Digital`)
 
-Sigue estos pasos para configurar y ejecutar el proyecto en Linux:
+Representa un recurso digital.
 
-### 1️⃣ Clonar el repositorio
+Incluye:
+
+- formato del archivo,
+- enlace o URL,
+- disponibilidad digital.
+
+---
+
+## Clase base `Libro`
+
+Ambos tipos de libros heredan de una clase base común que contiene:
+
+- título,
+- autor,
+- año,
+- género,
+- estado.
+
+---
+
+# 👥 Personas
+
+El sistema distingue entre diferentes tipos de usuarios.
+
+## Usuario
+
+Puede:
+
+- consultar libros,
+- solicitar préstamos,
+- devolver libros.
+
+---
+
+## Empleado
+
+Además de las capacidades básicas, puede:
+
+- gestionar registros,
+- administrar recursos,
+- controlar operaciones internas.
+
+Cada empleado dispone de:
+
+- ID de empleado,
+- rol o puesto dentro de la biblioteca.
+
+---
+
+# 🏷️ Géneros
+
+Los libros pueden clasificarse mediante géneros literarios.
+
+Cada género permite:
+
+- agrupar libros,
+- organizar colecciones,
+- consultar información asociada.
+
+---
+
+# 🔄 Persistencia de datos
+
+El proyecto utiliza **ficheros binarios** mediante el módulo `pickle` para guardar automáticamente el estado del sistema.
+
+Los datos persistentes incluyen:
+
+- libros,
+- usuarios,
+- empleados,
+- géneros.
+
+La información se almacena en:
 
 ```plaintext
+ejecucion/biblioteca.dat
+```
+
+---
+
+# 📄 Exportación de datos
+
+El sistema permite exportar información de la biblioteca mediante archivos de texto (`.txt`).
+
+Ejemplos de información exportable:
+
+- libros registrados,
+- usuarios,
+- empleados,
+- géneros,
+- informes generales del sistema.
+
+---
+
+# ⚠️ Manejo de excepciones
+
+El proyecto implementa control de excepciones para:
+
+- entradas inválidas,
+- errores de conversión numérica,
+- archivos inexistentes,
+- carga de datos persistentes.
+
+---
+
+# 🛠️ Instalación y ejecución
+
+## 1️⃣ Clonar el repositorio
+
+```bash
 git clone https://github.com/prog2-ia/trabajo-final-a10.git
 cd trabajo-final-a10
 ```
 
-### 2️⃣ Instalar Python (solo si no lo tienes, en este caso vamos a usar python 3)
+---
 
-```plaintext
+## 2️⃣ Instalar Python 3
+
+### Linux
+
+```bash
 sudo apt update
 sudo apt install python3 python3-pip
 ```
 
-### 3️⃣ Instalar dependencias (en este caso no es necesario, ya que el proyecto no requiere ninguna)
+---
 
-```plaintext
-pip3 install -r requirements.txt
+## 3️⃣ Instalar dependencias
+
+El proyecto no requiere librerías externas.
+
+```bash
+pip install -r requirements.txt
 ```
 
-### 4️⃣ Ejecutar el programa
+---
+
+## 4️⃣ Ejecutar el sistema
 
 Desde la raíz del proyecto:
 
-```plaintext
+```bash
 python3 -m ejecucion.main
 ```
 
 ---
 
-## ▶️ Uso
+# ▶️ Uso del sistema
 
-Una vez ejecutado el programa:
+Al ejecutar el programa se mostrará un menú interactivo con opciones como:
 
-```plaintext
-python3 -m ejecucion.main
-```
-
-El sistema mostrará un menú con las distintas opciones disponibles como consultar libros, prestar un libro, etc.
+- consultar libros,
+- registrar usuarios,
+- realizar préstamos,
+- gestionar géneros,
+- exportar información.
 
 ---
 
-## 📚 Ejemplos
+# 📚 Ejemplos de uso
 
-### 📖 Añadir un libro
+## 📖 Crear un libro físico
 
 ```plaintext
 Consultar libros
@@ -140,16 +257,20 @@ Consultar libros
 3. Reportar la condición de un libro físico
 4. Mostrar información de un libro
 5. Volver
+
 ¿Qué deseas hacer hoy? (Introduce un número): 1
+
 Introduce el titulo: La Celestina
 Introduce el autor: Fernando de Rojas
 Introduce el año: 1500
 Introduce la estanteria: A2
-Libro físico "La Celestina" creado correctamente
 
+Libro físico "La Celestina" creado correctamente
 ```
 
-### 🔍 Buscar un libro
+---
+
+## 🔍 Consultar un libro
 
 ```plaintext
 Consultar libros
@@ -158,27 +279,47 @@ Consultar libros
 3. Reportar la condición de un libro físico
 4. Mostrar información de un libro
 5. Volver
+
 ¿Qué deseas hacer hoy? (Introduce un número): 4
+
 Introduce el libro: Don Quijote de la Mancha
-Título: Don Quijote de la Mancha | Autor: Miguel de Cervantes | Año: 1605 | Género: Sin género | Estado: Disponible | Ubicación: Estantería A1 | Condición: Excelente
+
+Título: Don Quijote de la Mancha
+Autor: Miguel de Cervantes
+Año: 1605
+Estado: Disponible
+Ubicación: Estantería A1
+Condición: Excelente
 ```
 
 ---
 
-## 🛠️ Tecnologías utilizadas
+## 📄 Exportar información
 
-* **Python 3**
-* Programación Orientada a Objetos (POO)
-* Organización modular de código
+```plaintext
+¿Qué deseas hacer hoy? (Introduce un número): 6
 
----
-
-## 👨‍💻 Autor
-
-Proyecto desarrollado por el grupo A10 para la asignatura de Programación II.
+Datos exportados con éxito
+```
 
 ---
 
-## 📄 Licencia
+# 🛠️ Tecnologías utilizadas
 
-Este proyecto es de uso académico y educativo.
+- Python 3
+- Programación Orientada a Objetos (POO)
+- Persistencia con `pickle`
+- Ficheros de texto (`.txt`)
+- Arquitectura modular
+
+---
+
+# 👨‍💻 Autoría
+
+Proyecto desarrollado por el grupo **A10** para la asignatura de **Programación II**.
+
+---
+
+# 📄 Licencia
+
+Proyecto desarrollado con fines académicos y educativos.
