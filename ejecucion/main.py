@@ -2,7 +2,7 @@ from ejecucion.casos_uso import agregar_libro_biblio, eliminar_libro_biblio, mos
     crear_libro_digital, reportar_condicion_libro, buscar_libro, mostrar_info_libro, crear_empleado, \
     crear_usuario, gestionar_registro_empleado, buscar_empleado, buscar_usuario, prestar_libro_usuario, \
     devolver_libro_usuario, mostrar_info_persona, crear_genero, agregar_libro_genero, buscar_genero, \
-    mostrar_info_genero, pedir_entero, cargar_sistema, exportar_informe_txt
+    mostrar_info_genero, pedir_entero, cargar_sistema, exportar_informe_txt, guardar_sistema
 from ejecucion.objetos import biblioteca_central, bd_libros, bd_empleados, bd_usuarios, bd_generos
 
 def main()->None:
@@ -334,14 +334,18 @@ def main()->None:
             break
 
 if __name__ == '__main__':
-    datos = cargar_sistema()
-    bd_libros.clear()
-    bd_usuarios.clear()
-    bd_empleados.clear()
-    bd_generos.clear()
-    bd_libros.extend(datos['libros'])
-    bd_usuarios.extend(datos['usuarios'])
-    bd_empleados.extend(datos['empleados'])
-    bd_generos.extend(datos['generos'])
+    try:
+        datos=cargar_sistema()
 
-    main()
+        bd_libros.extend(datos['libros'])
+        bd_empleados.extend(datos['empleados'])
+        bd_usuarios.extend(datos['usuarios'])
+        bd_generos.extend(datos['generos'])
+
+        main()
+
+    except KeyboardInterrupt:
+        print('\nPrograma finalizado')
+
+    finally:
+        guardar_sistema()
