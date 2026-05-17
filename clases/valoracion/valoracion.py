@@ -2,17 +2,14 @@ class Valoracion:
     def __init__(self) -> None:
         self.valoraciones: dict = {} # Diccionario sobre las valoraciones de cada libro
 
-    def valorar(self, biblioteca, libro, puntuacion: int | float) -> None: # Método que recibe la biblioteca para valorar un libro de esta
-        if libro not in biblioteca.libros: # Comprueba que el libro exista dentro de la biblioteca proporcionada
-            print(f"Error: El libro '{libro}' no pertenece a la biblioteca {biblioteca.nombre}")
-            return # Sale si el libro no existe
+    def valorar(self, libro, puntuacion: int | float) -> None: # Método que recibe la biblioteca para valorar un libro de esta
 
         if puntuacion < 0 or puntuacion > 10: # Se asegura que la puntuación sea entre 0 y 10
             print("La puntuación debe ser entre 0 y 10")
             return # Sale si la nota no es válida
 
-        self.valoraciones[libro] = puntuacion # Si todo se cumple, agrega la valoración al diccionario
+        self.valoraciones[libro.titulo] = puntuacion # Si todo se cumple, agrega la valoración al diccionario
 
     def mostrar_valoraciones(self) -> None: # Método para mostrar las valoraciones
-        for libro in self.valoraciones:
-            print(libro, ":", self.valoraciones[libro])
+        for libro, puntuacion in self.valoraciones.items():
+            print(libro, ':', puntuacion)
