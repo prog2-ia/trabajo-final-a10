@@ -43,7 +43,6 @@ trabajo-final-a10/
 │       └─ valoracion.py
 │
 ├─ ejecucion/
-│   ├─ biblioteca.dat
 │   ├─ casos_uso.py
 │   ├─ main.py
 │   └─ objetos.py
