@@ -13,3 +13,6 @@ class Valoracion:
     def mostrar_valoraciones(self) -> None: # Método para mostrar las valoraciones
         for libro, puntuacion in self.valoraciones.items():
             print(libro, ':', puntuacion)
+
+    def __repr__(self) -> str:
+        return f'Valoraciones: {self.valoraciones}'

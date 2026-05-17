@@ -16,3 +16,6 @@ class Genero:
 
     def mostrar_info(self) -> str: # Método para mostrar información sobre un género específico
         return f'Nombre: {self.nombre} | Libros: {self.libros}'
+
+    def __repr__(self) -> str:
+        return self.mostrar_info()
