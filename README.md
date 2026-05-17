@@ -45,7 +45,7 @@ trabajo-final-a10/
 ├─ ejecucion/
 │   ├─ biblioteca.dat
 │   ├─ casos_uso.py
-    ├─ main.py
+│   ├─ main.py
 │   └─ objetos.py
 │
 ├─ README.md
