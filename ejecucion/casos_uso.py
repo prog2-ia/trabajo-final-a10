@@ -153,12 +153,32 @@ def cargar_sistema()->dict:
             return pickle.load(fichero)
 
     except FileNotFoundError:
-        return {
-            'libros': [],
-            'usuarios': [],
-            'empleados': [],
-            'generos': []
+        #Primero creamos los objetos iniciales
+        libro_fis1: Fisico = Fisico('Don Quijote de la Mancha', 'Miguel de Cervantes', 1605, 'A1')
+        libro_fis2: Fisico = Fisico('1984', 'George Orwell', 1949, 'B2')
+        libro_dig1: Digital = Digital('Clean Code', 'Robert C. Martin', 2008, 'PDF', 'https://descarga.com/cleancode')
+        libro_dig2: Digital = Digital('Python Crash Course', 'Eric Matthes', 2019, 'EPUB','https://biblioteca.com/pythoncrashcourse')
+
+        empleado1: Empleado = Empleado('11111111A', 'Ana', 'Garcia', 35, 'EMP001', 'bibliotecario')
+        empleado2: Empleado = Empleado('44444444D', 'Carlos', 'Sanchez', 31, 'EMP004', 'asistente')
+
+        usuario1: Usuario = Usuario('55555555E', 'Juan', 'Perez', 21)
+        usuario2: Usuario = Usuario('66666666F', 'Laura', 'Diaz', 19)
+
+        genero1: Genero = Genero('Fantasía')
+        genero2: Genero = Genero('Ciencia ficción')
+
+        datos={
+            'libros':[libro_fis1,libro_fis2,libro_dig1,libro_dig2],
+            'empleados': [empleado1, empleado2],
+            'usuarios':[usuario1,usuario2],
+            'generos':[genero1,genero2],
         }
+
+        with open('biblioteca.dat','wb') as fichero:
+            pickle.dump(datos,fichero)
+
+        return datos
 
 #Ficheros de texto
 def exportar_informe_txt():
