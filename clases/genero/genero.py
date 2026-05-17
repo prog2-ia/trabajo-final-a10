@@ -1,3 +1,5 @@
+from clases.libro_local.libro_local import Libro
+
 class Genero:
     def __init__(self, nombre: str) -> None:
         self.nombre: str = nombre
